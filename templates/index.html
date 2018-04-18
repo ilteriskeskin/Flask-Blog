@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <h3>GNU/Linux & FreeSoftware</h3>
+        <p>Bu web sitesi özgür yazılım teknolojilerini tanıtmak, bildiklerini paylaşmak ve öğrenmek isteyen herkese açıktır.</p>
+    </div>
+
+    {% if articles == [] %}
+            <div class="alert alert-danger" role="alert">
+                Herhangi Bir Yazı Girilmedi...
+            </div>
+        {% else %}
+            {% for article in articles %}
+                <td>
+                    <b>
+                        <h3 style="color:darkolivegreen">{{ article.title }}
+                        </h3>
+                    </b>
+                </td>
+                <td>
+                    <b>
+                        Yazar: {{ article.username }}
+                    </b>
+                </td>
+                <br>
+                <td>
+                    {{ article.content }}
+                </td>
+                <br><hr>
+            {% endfor %}
+        {% endif %}
+{% endblock body %}

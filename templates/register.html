@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if session['logged_in'] %}
+    <div class="alert alert-danger" role="alert">
+        Zaten Bir Kaydınız Bulunmaktadır...
+    </div>
+
+    {% else %}
+        {% from "includes/formhelpers.html" import render_field %}
+        {{ form.csrf_token }}
+            <form method=post>
+            <dl>
+                {{ render_field(form.username) }}
+                {{ render_field(form.password) }}
+                {{ render_field(form.confirm) }}
+                {{ form.recaptcha }}
+                {% for error in form.recaptcha.errors %}
+                <div class="alert alert-danger" role="alert">
+                    Doğrulamak için kutucuğu işaretleyin.
+                </div>
+                {% endfor %}
+            </dl>
+                <p><input type=submit value=Register>
+            </form>
+    {% endif %}
+{% endblock body %}

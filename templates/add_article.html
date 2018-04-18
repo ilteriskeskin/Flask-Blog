@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div style="margin-top: 10%;" class="container">
+        <h3>Yazı Ekle</h3>
+        <hr>
+
+        <form action="/add" method="POST">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Yazı Başlığınız</label>
+                <input type="text" class="form-control" name="title" id="formGroupExampleInput" placeholder="Başlık Giriniz: ">
+                <br>
+                <label for="formGroupExampleInput">Yazı İçeriğiniz</label>
+                <input type="text" class="form-control" name="content" id="formGroupExampleInput" placeholder="İçerik Giriniz: ">
+                <br>
+                <button type="submit" class="btn btn-danger">Ekle</button>
+            </div>
+            <hr>
+        </form>
+</div>
+
+{% endblock body %}
