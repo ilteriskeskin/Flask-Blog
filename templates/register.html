@@ -14,12 +14,6 @@
                 {{ render_field(form.username) }}
                 {{ render_field(form.password) }}
                 {{ render_field(form.confirm) }}
-                {{ form.recaptcha }}
-                {% for error in form.recaptcha.errors %}
-                <div class="alert alert-danger" role="alert">
-                    Doğrulamak için kutucuğu işaretleyin.
-                </div>
-                {% endfor %}
             </dl>
                 <p><input type=submit value=Register>
             </form>

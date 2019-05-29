@@ -2,15 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, TextAreaField
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf import RecaptchaField
 
 app = Flask(__name__)
-app.secret_key = "123"
+app.secret_key = "linuxdegilgnulinux"
 
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6Ldn_FMUAAAAAKTEuwOcDLUpKO1vqJx3xcuojkOX'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6Ldn_FMUAAAAAJP1EYZHbyVH0PsHji82IA0QWPV5'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ilteriskeskin/Belgeler/VSCode/Flask/BlogSqlite/blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/ilteriskeskin/Belgeler/Flask-Blog/blog.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Blog(db.Model):
@@ -30,7 +27,6 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', message='Parolalar uyuşmuyor, tekrar deneyin!')
     ])
     confirm = PasswordField('Tekrar Giriniz')
-    recaptcha = RecaptchaField()
 
 @app.route('/')
 def home():
